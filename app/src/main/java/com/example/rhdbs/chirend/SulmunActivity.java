@@ -11,13 +11,13 @@ import android.widget.RadioGroup;
  * Created by rhdbs on 2016-10-13.
  */
 
-public class SubActivity extends AppCompatActivity {
+public class SulmunActivity extends AppCompatActivity {
     NumberPicker age_picker;
     RadioGroup gender_RG;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sub);
+        setContentView(R.layout.activity_sulmun);
         setTitle("설문조사");
 
         age_picker = (NumberPicker) findViewById(R.id.age);
@@ -25,10 +25,7 @@ public class SubActivity extends AppCompatActivity {
         age_picker.setMaxValue(20);
 
         gender_RG = (RadioGroup) findViewById(R.id.gender);
-/*
-        Handler hd2 = new Handler();
-        hd2.postDelayed(new SubActivity.RstType(), 5000); // 3초 후에 hd Handler 실행
-*/
+
     }
     private class RstType implements Runnable{
         public void run() {
