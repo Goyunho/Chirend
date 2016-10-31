@@ -11,7 +11,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/colorPrimary"
     android:orientation="vertical"
-    tools:context="com.example.rhdbs.chirend.MainActivity">
+    tools:context="com.example.rhdbs.chirend.LoadingActivity">
 
 
         <ImageView

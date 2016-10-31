@@ -24,7 +24,7 @@ public class SulmunActivity extends AppCompatActivity {
         age_picker.setMinValue(0);
         age_picker.setMaxValue(20);
 
-        gender_RG = (RadioGroup) findViewById(R.id.gender);
+        gender_RG = (RadioGroup) findViewById(R.id.sex);
 
     }
     private class RstType implements Runnable{
