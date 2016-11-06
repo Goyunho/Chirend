@@ -18,7 +18,7 @@ def main() :
 
     for i in range(100):
         resp = requests.get(url, params=ranParams())
-        if(resp.text != 'access\n'):
+        if('002' in resp.text):
             print('Error! \t 쿼리를 확인해주세요!')
             print(resp.text)
         else:
