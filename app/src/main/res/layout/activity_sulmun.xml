@@ -61,13 +61,13 @@
                     android:text="남자아이"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/radioButton4" />
+                    android:id="@+id/rb_boy" />
 
                 <RadioButton
                     android:text="여자아이"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/radioButton3"
+                    android:id="@+id/rb_girl"
                     android:layout_weight="1" />
             </RadioGroup>
 
