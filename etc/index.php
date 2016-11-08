@@ -1,5 +1,5 @@
 <?
-require_once('mysql_conn.php'); //mysql 연결
+require_once('mysql_class.php'); //mysql 연결
 
 if(is_null($_GET['contents_id']) && is_null($_GET['sex']) && is_null($_GET['age'])){
     //echo 'no query';
@@ -14,6 +14,4 @@ if(is_null($_GET['contents_id']) && is_null($_GET['sex']) && is_null($_GET['age'
         exit;
     }
 }
-
-require_once('mysql_close.php');
 ?>
