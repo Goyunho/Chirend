@@ -41,8 +41,12 @@ public class Contents {
     }
 
     public void switchChk(){
-        if(check == true) check=false;
-        else check=true;
+        if(this.check == true) check=false;
+        else this.check=true;
+    }
+
+    public boolean getChk(){
+        return this.check;
     }
 
     public Bitmap getImage(){

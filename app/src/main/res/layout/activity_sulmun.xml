@@ -83,9 +83,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:columnCount="2"
+            android:columnCount="3"
             android:useDefaultMargins="true"
-            android:id="@+id/grid">
+            android:id="@+id/grid"
+            android:layout_gravity="top|center">
 
             <Button
                 android:text="NEXT >"
@@ -95,7 +96,7 @@
                 android:id="@+id/next2"
                 android:onClick="showRst"
                 android:padding="3dp"
-                android:layout_columnSpan="2"/>
+                android:layout_columnSpan="3"/>
         </GridLayout>
     </ScrollView>
 
