@@ -1,14 +1,19 @@
 package com.example.rhdbs.chirend;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.GridLayout;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -16,10 +21,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
+
+import static android.widget.ImageView.ScaleType.FIT_CENTER;
 
 /**
  * Created by rhdbs on 2016-10-13.
@@ -30,8 +37,9 @@ public class SulmunActivity extends AppCompatActivity {
     RadioGroup gender_RG;
     int NPValue;
     String sex;
-    TextView tv;
     Contents[] cont;
+    GridLayout grid;
+    ImageButton[] imageB;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,14 +49,27 @@ public class SulmunActivity extends AppCompatActivity {
         age_picker = (NumberPicker) findViewById(R.id.age);
         age_picker.setMinValue(3);
         age_picker.setMaxValue(13);
-        tv = (TextView) findViewById(R.id.textView);
 
         gender_RG = (RadioGroup) findViewById(R.id.sex);
+        grid = (GridLayout) findViewById(R.id.grid);
+
         String jsondata = getData("http://naneg93.dothome.co.kr/imageload.php/");
         try {
             getJSON(jsondata);
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+
+        imageB = new ImageButton[cont.length];
+        for(int i=0; i < cont.length; i++){
+            imageB[i] = new ImageButton(this);
+            imageB[i].setId(Integer.parseInt(cont[i].getId()));
+            imageB[i].setImageBitmap(getImage(cont[i].getImage()));
+            imageB[i].getLayoutParams().width = 100;
+            imageB[i].getLayoutParams().height = 100;
+            imageB[i].requestLayout();
+            imageB[i].setScaleType(ImageButton.ScaleType.CENTER_CROP);
+            grid.addView(imageB[i]);
         }
     }
 
@@ -74,13 +95,14 @@ public class SulmunActivity extends AppCompatActivity {
 
     public void getJSON(String jsonObj) throws JSONException {
         try {
-            Toast.makeText(getApplicationContext(), jsonObj, Toast.LENGTH_LONG).show();
             JSONArray jarray = new JSONArray(jsonObj);   // JSONArray 생성
+            cont = new Contents[jarray.length()];
             for (int i = 0; i < jarray.length(); i++) {
                 JSONObject jObject = jarray.getJSONObject(i);  // JSONObject 추출
                 String id = jObject.getString("id");
                 String name = jObject.getString("name");
                 String image = jObject.getString("image");
+
                 cont[i] = new Contents(id, name, image);
             }
         } catch (Exception e){
@@ -116,6 +138,31 @@ public class SulmunActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Error getData!", Toast.LENGTH_LONG).show();
         }
         return data;
+    }
+
+    public Bitmap getImage(String urlAddress){
+        Bitmap bitmap = null;
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build(); // 이거랑
+        StrictMode.setThreadPolicy(policy); // 이게 있어야 conn.connect()에서 에러가 안남!!! 중요!!!
+        try {
+            URL url = new URL(urlAddress);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();// 접속
+            if (conn != null) {
+                conn.setRequestMethod("GET");
+                conn.setDoInput(true);
+                conn.connect();
+                if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                    //    데이터 읽기
+                    InputStream is = conn.getInputStream();
+                    bitmap = BitmapFactory.decodeStream(is);
+                }
+                conn.disconnect(); // 연결 끊기
+            }
+        } catch (Exception e) {
+            //
+            Toast.makeText(getApplicationContext(), "Error getImage!", Toast.LENGTH_LONG).show();
+        }
+        return bitmap;
     }
 
 }
