@@ -64,10 +64,7 @@ public class SulmunActivity extends AppCompatActivity {
         for(int i=0; i < cont.length; i++){
             imageB[i] = new ImageButton(this);
             imageB[i].setId(Integer.parseInt(cont[i].getId()));
-            imageB[i].setImageBitmap(getImage(cont[i].getImage()));
-            imageB[i].getLayoutParams().width = 100;
-            imageB[i].getLayoutParams().height = 100;
-            imageB[i].requestLayout();
+            imageB[i].setImageBitmap(cont[i].getImage());
             imageB[i].setScaleType(ImageButton.ScaleType.CENTER_CROP);
             grid.addView(imageB[i]);
         }
@@ -138,31 +135,6 @@ public class SulmunActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Error getData!", Toast.LENGTH_LONG).show();
         }
         return data;
-    }
-
-    public Bitmap getImage(String urlAddress){
-        Bitmap bitmap = null;
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build(); // 이거랑
-        StrictMode.setThreadPolicy(policy); // 이게 있어야 conn.connect()에서 에러가 안남!!! 중요!!!
-        try {
-            URL url = new URL(urlAddress);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();// 접속
-            if (conn != null) {
-                conn.setRequestMethod("GET");
-                conn.setDoInput(true);
-                conn.connect();
-                if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                    //    데이터 읽기
-                    InputStream is = conn.getInputStream();
-                    bitmap = BitmapFactory.decodeStream(is);
-                }
-                conn.disconnect(); // 연결 끊기
-            }
-        } catch (Exception e) {
-            //
-            Toast.makeText(getApplicationContext(), "Error getImage!", Toast.LENGTH_LONG).show();
-        }
-        return bitmap;
     }
 
 }
