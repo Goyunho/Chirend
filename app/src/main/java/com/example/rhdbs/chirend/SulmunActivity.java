@@ -50,7 +50,7 @@ public class SulmunActivity extends AppCompatActivity {
         gender_RG = (RadioGroup) findViewById(R.id.sex);
         grid = (GridLayout) findViewById(R.id.grid);
 
-        String jsondata = getData("http://naneg93.dothome.co.kr/imageload.php/");
+        String jsondata = MakedModulesByGoLim.getData("http://naneg93.dothome.co.kr/imageload.php/");
         try {
             getJSON(jsondata);
         } catch (JSONException e) {
@@ -103,13 +103,14 @@ public class SulmunActivity extends AppCompatActivity {
             String id = cont.getKey();
             Contents obj = cont.getValue();
             if(obj.getChk()){
-                String massage = getData("http://naneg93.dothome.co.kr/responeSulmun.php?age="+NPValue+"&sex="+sex+"&contents_id="+id);
+                String massage = MakedModulesByGoLim.getData("http://naneg93.dothome.co.kr/responeSulmun.php?age="+NPValue+"&sex="+sex+"&contents_id="+id);
                 if(!massage.equals("")){
                     Toast.makeText(getApplicationContext(), massage, Toast.LENGTH_LONG).show();
                     break;
                 }
             }
         }
+        intent.putExtra("Contents", conts);
         startActivity(intent);
     }
 
@@ -127,35 +128,4 @@ public class SulmunActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "getJSON Error!", Toast.LENGTH_LONG).show();
         }
     }
-
-    public String getData(String urlAddress) {
-        String data = "";
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build(); // 이거랑
-        StrictMode.setThreadPolicy(policy); // 이게 있어야 conn.connect()에서 에러가 안남!!! 중요!!!
-        try {
-            URL url = new URL(urlAddress);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();// 접속
-
-            if (conn != null) {
-                conn.setRequestMethod("GET");
-                conn.connect();
-                if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                    //    데이터 읽기
-                    BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "euc-kr"));//"utf-8","euc-kr"
-                    while (true) {
-                        String line = br.readLine();
-                        if (line == null) break;
-                        data += line + '\n';
-                    }
-                    br.close(); // 스트림 해제
-                }
-                conn.disconnect(); // 연결 끊기
-            }
-        } catch (Exception e) {
-            //
-            Toast.makeText(getApplicationContext(), "Error getData!", Toast.LENGTH_LONG).show();
-        }
-        return data;
-    }
-
 }

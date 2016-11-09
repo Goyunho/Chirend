@@ -20,41 +20,134 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/webview"
-                android:elevation="4dp"/>
+                android:elevation="4dp"
+                style="@style/shtyperstCard" />
 
-            <FrameLayout
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent">
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="5dp"
+                style="@style/shtyperstCard">
 
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="250dp"
-                    app:srcCompat="@drawable/p1"
-                    android:id="@+id/imageView3" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+                    <TextView
+                        android:text=""
+                        android:id="@+id/tvTitle_no"
+                        style="@style/rankColNo"/>
+                    <TextView
+                        android:text="실시간"
+                        android:id="@+id/tvTitle_rt"
+                        style="@style/rankColRt"/>
+                    <TextView
+                        android:text="일간"
+                        android:id="@+id/tvTitle_daily"
+                        style="@style/rankColDy"/>
+                    <TextView
+                        android:text="주간"
+                        android:id="@+id/tvTitle_weakly"
+                        style="@style/rankColWk"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+                    <TextView
+                        android:text="1"
+                        android:id="@+id/tvRow1_no"
+                        style="@style/rankColNo"/>
+                    <TextView
+                        android:id="@+id/tvRow1_rt"
+                        style="@style/rankColRt"/>
+                    <TextView
+                        android:id="@+id/tvRow1_daily"
+                        style="@style/rankColDy"/>
+                    <TextView
+                        android:id="@+id/tvRow1_weakly"
+                        style="@style/rankColWk"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+                    <TextView
+                        android:text="2"
+                        android:id="@+id/tvRow2_no"
+                        style="@style/rankColNo"/>
+                    <TextView
+                        android:id="@+id/tvRow2_rt"
+                        style="@style/rankColRt"/>
+                    <TextView
+                        android:id="@+id/tvRow2_daily"
+                        style="@style/rankColDy"/>
+                    <TextView
+                        android:id="@+id/tvRow2_weakly"
+                        style="@style/rankColWk"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+                    <TextView
+                        android:text="3"
+                        android:id="@+id/tvRow3_no"
+                        style="@style/rankColNo"/>
+                    <TextView
+                        android:id="@+id/tvRow3_rt"
+                        style="@style/rankColRt"/>
+                    <TextView
+                        android:id="@+id/tvRow3_daily"
+                        style="@style/rankColDy"/>
+                    <TextView
+                        android:id="@+id/tvRow3_weakly"
+                        style="@style/rankColWk"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+                    <TextView
+                        android:text="4"
+                        android:id="@+id/tvRow4_no"
+                        style="@style/rankColNo"/>
 
-            </FrameLayout>
+                    <TextView
+                        android:id="@+id/tvRow4_rt"
+                        style="@style/rankColRt"/>
 
-            <FrameLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
+                    <TextView
+                        android:id="@+id/tvRow4_daily"
+                        style="@style/rankColDy"/>
+                    <TextView
+                        android:id="@+id/tvRow4_weakly"
+                        style="@style/rankColWk"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+                    <TextView
+                        android:text="5"
+                        android:id="@+id/tvRow5_no"
+                        style="@style/rankColNo"/>
+                    <TextView
+                        android:id="@+id/tvRow5_rt"
+                        style="@style/rankColRt"/>
+                    <TextView
+                        android:id="@+id/tvRow5_daily"
+                        style="@style/rankColDy"/>
+                    <TextView
+                        android:id="@+id/tvRow5_weakly"
+                        style="@style/rankColWk"/>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="250dp"
-                    app:srcCompat="@drawable/p4"
-                    android:id="@+id/imageView4" />
-            </FrameLayout>
+                </TableRow>
 
-            <FrameLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
+            </TableLayout>
 
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="250dp"
-                    app:srcCompat="@drawable/p3"
-                    android:id="@+id/imageView5" />
-            </FrameLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                app:srcCompat="@drawable/p3"
+                android:id="@+id/imageView5" />
 
         </LinearLayout>
     </ScrollView>

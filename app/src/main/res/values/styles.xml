@@ -9,4 +9,40 @@
         <!--item name="colorNotCheck">@color/colorGray</item-->
     </style>
 
+    <style name="shtyperstCard">
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginLeft">3dp</item>
+        <item name="android:layout_marginRight">3dp</item>
+        <item name="android:background">#ffffff</item>
+    </style>
+
+    <style name="rtRankTextView">
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:onClick">nextActList</item>
+        <item name="android:text">-</item>
+    </style>
+
+    <style name="rankColNo" parent="rtRankTextView">
+        <!--item name="layout_weight">0.8</item-->
+        <item name="android:background">#00A388</item>
+    </style>
+
+    <style name="rankColRt" parent="rtRankTextView">
+        <item name="android:background">#FFFF9D</item>
+    </style>
+    <style name="rankColDy" parent="rtRankTextView">
+        <item name="android:background">#BEEB9F</item>
+    </style>
+    <style name="rankColWk" parent="rtRankTextView">
+        <item name="android:background">#79BD8F</item>
+    </style>
+
+    <style name="lastPageInfo">
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 </resources>

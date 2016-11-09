@@ -28,8 +28,8 @@ public class LoadingActivity extends AppCompatActivity {
     }
 
     public void toSulmun(View v){
-        //startActivity(new Intent(getApplication(), SulmunActivity.class)); // 로딩이 끝난후 이동할 Activity
-        startActivity(new Intent(getApplication(), ContentsList.class)); // 로딩이 끝난후 이동할 Activity
+        startActivity(new Intent(getApplication(), SulmunActivity.class)); // 로딩이 끝난후 이동할 Activity
+        //startActivity(new Intent(getApplication(), ContentsList.class)); // 로딩이 끝난후 이동할 Activity
         LoadingActivity.this.finish(); // 로딩페이지 Activity Stack에서 제거
     }
 }

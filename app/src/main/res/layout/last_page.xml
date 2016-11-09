@@ -4,11 +4,174 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/t1"
 
-    />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="299dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="167dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:id="@+id/last_page_icon"
+                android:background="@color/colorAccent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                style="@style/lastPageInfo">
+
+                <Button
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:id="@+id/bt1"
+                    android:text="상품 구매"
+                    android:onClick="bb1"
+                    />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/bt2"
+                    android:text="상품 리뷰"
+                    android:onClick="bb2"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal"
+                style="@style/lastPageInfo"
+                >
+                <TextView
+                    android:text="상품 이름"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    tools:background="@color/colorAccent" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="20dp"
+                    android:id="@+id/t1"
+                    android:background="@color/colorPrimary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal"
+                style="@style/lastPageInfo"
+                >
+                <TextView
+                    android:text="체험관 위치"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    tools:background="@color/colorAccent"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="20dp"
+                    android:id="@+id/t2"
+                    android:background="@color/colorPrimary"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+                style="@style/lastPageInfo"
+            >
+            <TextView
+                android:text="체험 연령"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                tools:background="@color/colorAccent"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="20dp"
+                android:id="@+id/t3"
+                android:background="@color/colorPrimary"
+                />
+        </LinearLayout>
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+                style="@style/lastPageInfo"
+            >
+            <TextView
+                android:text="가격"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                tools:background="@color/colorAccent"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="20dp"
+                android:id="@+id/t4"
+                android:background="@color/colorPrimary"
+                android:text="$13,000원"
+                />
+        </LinearLayout>
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="4dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+                style="@style/lastPageInfo"
+            >
+            <TextView
+                android:text="체험효과"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                tools:background="@color/colorAccent"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="20dp"
+                android:id="@+id/t5"
+                android:background="@color/colorPrimary"
+                android:text="아이의 두뇌 건강에 도움이된다."
+                />
+        </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_height="241dp"
+        android:id="@+id/wv_map"
+        android:layout_gravity="bottom" />
 </LinearLayout>
