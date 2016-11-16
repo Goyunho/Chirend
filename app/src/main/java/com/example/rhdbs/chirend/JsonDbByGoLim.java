@@ -1,5 +1,7 @@
 package com.example.rhdbs.chirend;
 
+import android.widget.Toast;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,36 +17,28 @@ import java.util.Map;
 
 public class JsonDbByGoLim {
     public static String[] columnName;
-    public static List<Map<String, String>> data = new ArrayList<Map<String, String>>();
-    HashMap<String, String> datamap = new HashMap<String, String>();
+    public static List<Map<String, String>> dataList = new ArrayList<Map<String, String>>();
 
-    public JsonDbByGoLim(){
-
-    }
     public JsonDbByGoLim(String columnName[]){
         this.columnName = columnName;
     }
 
     public void getJSON(String jsonObj) throws JSONException {
-        try {
-            JSONArray jarray = new JSONArray(jsonObj);   // JSONArray 생성
-            for (int i = 0; i < jarray.length(); i++) {
-                JSONObject jObject = jarray.getJSONObject(i);  // JSONObject 추출
-                for(String key : columnName){
-                    datamap.put(key, jObject.getString(key));
-                    data.add(datamap);
-                }
+
+        JSONArray jarray = new JSONArray(jsonObj);   // JSONArray 생성
+        for (int i = 0; i < jarray.length(); i++) {
+            JSONObject jObject = jarray.getJSONObject(i);  // JSONObject 추출
+            HashMap<String, String> dataMap = new HashMap<String, String>();
+            for (String key : columnName) {
+                dataMap.put(key, jObject.getString(key));
             }
-        } catch (Exception e){
-            //return null;
-            e.printStackTrace();
+            dataList.add(dataMap);
         }
-        //return this.data;
     }
 
     public String toString() {
         String str = "{[";
-        for(Map<String, String> i : data){
+        for(Map<String, String> i : dataList){
             for(Map.Entry<String, String> s : i.entrySet()){
                 str += "{\""+s.getKey()+"\":";
                 str += "\""+s.getValue()+"\"}";

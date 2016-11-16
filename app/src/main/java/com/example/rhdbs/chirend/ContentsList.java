@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,10 +27,11 @@ public class ContentsList extends AppCompatActivity {
     public static Context mContext;
 
     private static final String TAG_RESULTS = "result";
-
-    private static final String TAG_TEXT1 = "content";
-    private static final String TAG_TEXT2 = "position";
-    private static final String TAG_TEXT3 = "age";
+    private static final String TAG_CONTENT = "content";
+    private static final String TAG_POSITION = "position";
+    private static final String TAG_AGE = "age";
+    private static final String TAG_URL = "url";
+    private static final String TAG_ID = "no";
     JSONArray peoples = null;
 
     ArrayList<HashMap<String, String>> personList;
@@ -43,25 +45,30 @@ public class ContentsList extends AppCompatActivity {
         mContext = this;
 
         Intent intent = getIntent();
-        setTitle(intent.getStringExtra("contents"));
+        setTitle(intent.getStringExtra("contents_name"));
+        String contents_id = intent.getStringExtra("contents_id");
         list = (ListView) findViewById(R.id.listview);
 
         personList = new ArrayList<HashMap<String, String>>();
-        getData("http://naneg93.dothome.co.kr/b.php");
+        getData("http://naneg93.dothome.co.kr/contentsList.php?contents_id="+contents_id);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
                 Intent intent = new Intent(getApplicationContext(), Last_page.class);
-                String str = personList.get(i).get(TAG_TEXT1);
-                String str2 = personList.get(i).get(TAG_TEXT2);
-                String str3 = personList.get(i).get(TAG_TEXT3);
+                String content = personList.get(i).get(TAG_CONTENT);
+                String position = personList.get(i).get(TAG_POSITION);
+                String age = personList.get(i).get(TAG_AGE);
+                String img_url = personList.get(i).get(TAG_URL);
+                String item_no = personList.get(i).get(TAG_ID);
 
-                intent.putExtra("content", str);
+                intent.putExtra("content", content);
                 ///////////////////////////////////////////////////
-                intent.putExtra("position",str2);
-                intent.putExtra("age",str3);
-                intent.putExtra("img", (Bitmap) Contents.getImage(personList.get(i).get("url")));
+                intent.putExtra("position",position);
+                intent.putExtra("age", age);
+                intent.putExtra("img", img_url);
+                intent.putExtra("item_no", item_no);
+                //intent.putExtra("img", (Bitmap) Contents.getImage(img_url));
                 startActivity(intent);
             }
         });
@@ -75,25 +82,23 @@ public class ContentsList extends AppCompatActivity {
             peoples = jsonObj.getJSONArray(TAG_RESULTS);
             for (int i = 0; i < peoples.length(); i++) {
                 JSONObject c = peoples.getJSONObject(i);
-                String text1 = c.getString(TAG_TEXT1);
-                String text2 = c.getString(TAG_TEXT2);
-                String text3 = c.getString(TAG_TEXT3);
-                String url = c.getString("url");
+                String content = c.getString(TAG_CONTENT);
+                String position = c.getString(TAG_POSITION);
+                String age = c.getString(TAG_AGE);
+                String url = c.getString(TAG_URL);
+                String item_no = c.getString(TAG_ID);
                 HashMap<String, String> persons = new HashMap<String, String>();
 
-                persons.put("url", url);
-                persons.put(TAG_TEXT1, text1);
-                persons.put(TAG_TEXT2, text2);
-                persons.put(TAG_TEXT3, text3);
+                persons.put(TAG_URL, url);
+                persons.put(TAG_CONTENT, content);
+                persons.put(TAG_POSITION, position);
+                persons.put(TAG_AGE, age);
+                persons.put(TAG_ID, item_no);
                 personList.add(persons);
-                adapter.add(Contents.getImage(url) ,text1, text2, text3);
+                adapter.add(Contents.getImage(url) ,content, position, age);
             }
-            /*ListAdapter adapter = new SimpleAdapter(
-                    ContentsList.this, personList, R.layout.list_view,
-                    new String[]{"url", TAG_TEXT1, TAG_TEXT2, TAG_TEXT3},
-                    new int[]{R.id.url , R.id.text1, R.id.text2, R.id.text3}
-            );*/
         } catch (JSONException e) {
+            Toast.makeText(getApplicationContext(), "showList Error!", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }

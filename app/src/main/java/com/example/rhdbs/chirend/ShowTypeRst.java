@@ -53,7 +53,9 @@ public class ShowTypeRst extends AppCompatActivity{
 
     public void nextActList(View v) {
         Intent intent = new Intent(this, ContentsList.class);
-        intent.putExtra("contents", (String) v.getTag());
+        String contents_info[] = (String[]) v.getTag();
+        intent.putExtra("contents_id", contents_info[0]);
+        intent.putExtra("contents_name", contents_info[1]);
         startActivity(intent);
     }
 
@@ -112,39 +114,19 @@ public class ShowTypeRst extends AppCompatActivity{
     public void getJSON_tvRank(String jsonObj, int col) throws JSONException {
         try {
             JSONArray jarray = new JSONArray(jsonObj);   // JSONArray 생성
-
             for (int i = 0; i < jarray.length(); i++) {
                 JSONObject jObject = jarray.getJSONObject(i);  // JSONObject 추출
-                String rank = jObject.getString("rank");
-                String contents_id = jObject.getString("contents_id");
-                String count = jObject.getString("count");
-                String contents_name = conts.get(contents_id).getName();
-                rnk[col][i].setText(contents_name);
-                rnk[col][i].setTag(contents_name);
+                int rank = jObject.getInt("rank");
+                if(0 < rank && rank < 6) {
+                    String contents_id = jObject.getString("contents_id");
+                    //String count = jObject.getString("count");
+                    String contents_name = conts.get(contents_id).getName();
+                    rnk[col][rank-1].setText(contents_name);
+                    rnk[col][rank-1].setTag(new String[]{contents_id, contents_name});
+                }
             }
-            /*if (jarray.length() >= 5){
-                for (int i = 0; i < 5; i++) {
-                    JSONObject jObject = jarray.getJSONObject(i);  // JSONObject 추출
-                    String rank = jObject.getString("rank");
-                    String contents_id = jObject.getString("contents_id");
-                    String count = jObject.getString("count");
-
-                    rnk[col][i].setText(conts.get(contents_id).getName());
-                    rnk[col][i].setTag(contents_id);
-                }
-            } else {
-                for (int i = 0; i < jarray.length(); i++) {
-                    JSONObject jObject = jarray.getJSONObject(i);  // JSONObject 추출
-                    String rank = jObject.getString("rank");
-                    String contents_id = jObject.getString("contents_id");
-                    String count = jObject.getString("count");
-
-                    rnk[col][i].setText(conts.get(contents_id).getName());
-                    rnk[col][i].setTag(contents_id);
-                }
-            }*/
         } catch (Exception e){
-            //Toast.makeText(getApplicationContext(), "getJSON_rvRank Error!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "getJSON_rvRank Error!", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }

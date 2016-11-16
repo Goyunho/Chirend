@@ -83,10 +83,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:columnCount="3"
             android:useDefaultMargins="true"
             android:id="@+id/grid"
-            android:layout_gravity="top|center">
+            android:layout_gravity="top|center"
+            android:columnCount="3">
 
             <Button
                 android:text="NEXT >"

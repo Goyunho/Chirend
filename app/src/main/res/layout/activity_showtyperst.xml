@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:background="#ecf0f1"
-    android:layout_height="999dp"
+    android:layout_height="match_parent"
     android:isScrollContainer="true">
 
     <ScrollView
@@ -14,13 +14,13 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="1">
 
             <WebView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/webview"
-                android:elevation="4dp"
                 style="@style/shtyperstCard" />
 
             <TableLayout
@@ -144,10 +144,11 @@
             </TableLayout>
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
                 app:srcCompat="@drawable/p3"
-                android:id="@+id/imageView5" />
+                android:id="@+id/imageView5"
+                style="@style/shtyperstCard"
+                android:layout_width="match_parent"
+                android:layout_height="310dp" />
 
         </LinearLayout>
     </ScrollView>
