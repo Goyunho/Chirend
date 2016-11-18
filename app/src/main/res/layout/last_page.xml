@@ -164,13 +164,23 @@
                 android:background="@color/colorPrimary"
                 android:text="아이의 두뇌 건강에 도움이된다."
                 />
-        </LinearLayout>
+
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
-    <WebView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="241dp"
-        android:id="@+id/wv_map"
-        android:layout_gravity="bottom" />
+        android:layout_height="match_parent"
+        android:gravity="bottom">
+
+        <WebView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/wv_map"
+            android:layout_gravity="bottom" >
+
+        </WebView>
+    </RelativeLayout>
+
 </LinearLayout>

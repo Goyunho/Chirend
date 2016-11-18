@@ -31,4 +31,12 @@
             android:visibility="invisible"
             android:onClick="toSulmun" />
 
+        <TextView
+            android:text="네트워크 혹은 서버 연결을 확인해주십시오."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_server_check"
+            android:visibility="invisible"
+            android:gravity="center" />
+
 </LinearLayout>
