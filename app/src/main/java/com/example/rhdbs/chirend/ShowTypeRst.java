@@ -113,6 +113,15 @@ public class ShowTypeRst extends AppCompatActivity{
 
     public void getJSON_tvRank(String jsonObj, int col) throws JSONException {
         try {
+            [
+                {"rank":"1","contents_id":"3","count":"9"},
+                {"rank":"2","contents_id":"6","count":"7"},
+                {"rank":"3","contents_id":"2","count":"7"},
+                {"rank":"4","contents_id":"5","count":"6"},
+                {"rank":"5","contents_id":"7","count":"6"},
+                {"rank":"6","contents_id":"1","count":"5"},
+                {"rank":"7","contents_id":"4","count":"4"}
+            ]
             JSONArray jarray = new JSONArray(jsonObj);   // JSONArray 생성
             for (int i = 0; i < jarray.length(); i++) {
                 JSONObject jObject = jarray.getJSONObject(i);  // JSONObject 추출

@@ -73,35 +73,6 @@ public class CstAdater extends BaseAdapter {
             text1.setText(listViewItem.getTitle());
             text2.setText(listViewItem.getPosition());
             text3.setText(listViewItem.getAge());
-
-            // 리스트 아이템을 터치 했을 때 이벤트 발생
-           /* convertView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // 터치 시 해당 아이템 이름 출력
-                    //Toast.makeText(context, "리스트 클릭 : "+listViewItemList.get(pos), Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(ContentsList.mContext, Last_page.class);
-                    String str = personList.get(i).get(TAG_TEXT1);
-                    String str2 = personList.get(i).get(TAG_TEXT2);
-                    String str3 = personList.get(i).get(TAG_TEXT3);
-
-                    intent.putExtra("content", str);
-                    ///////////////////////////////////////////////////
-                    intent.putExtra("position",str2);
-                    intent.putExtra("age",str3);
-                    startActivity(intent);
-                }
-            });*/
-
-            // 리스트 아이템을 길게 터치 했을 떄 이벤트 발생
-            /*convertView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    // 터치 시 해당 아이템 이름 출력
-                    Toast.makeText(context, "리스트 롱 클릭 : "+listViewItemList.get(pos), Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-            });*/
         }
 
         return convertView;
